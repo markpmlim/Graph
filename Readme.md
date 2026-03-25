@@ -2,7 +2,7 @@
 
 **Definition**
 
-A **graph** G consists of a finite set of vertices V, and for all *v* ∊ V, a subset of V, E, called the finite set of vertices adjacent to *v*.  Formally, a graph is denoted as a pair G(V, E) 
+A **graph** G consists of a finite set of vertices V, and for all *v* ∊ V, a subset of V, E, called the finite set of vertices adjacent to *v* (edges).  Formally, a graph is denoted as a pair G(V, E) 
 
 Depending on the requirements of the problem or application, graphs can be implemented using different methods, such as adjacency lists, adjacency matrices, or edge lists.
 
