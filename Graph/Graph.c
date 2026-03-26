@@ -62,7 +62,7 @@ int dequeue(Queue_type*);
 Boolean_type isEmpty(Queue_type*);
 
 void depthFirstSearch(Graph_type);
-void breadthFirstSearch(int, Graph_type);
+void breadthFirstSearch(Graph_type);
 
 
 //////// start of program code
@@ -282,13 +282,6 @@ int length(Vertex_type* head)
     return count;
 }
 
-/*
- The DFS code is based on algorithm presented on pg 519
- Data Structures and Program Design in C (2nd Edition.)
-
- Robert L. Kruse, Clovis L. Tondo, Bruce P. Leung
-
- */
 void visitNode(Vertex_type *p)
 {
     printf("Visited %d\n", p->label);    // Process the current vertex node
@@ -313,12 +306,7 @@ void traverse(Vertex_type *p, Boolean_type isVisited[],
     }
 }
 
-/*
- Pre: graph has been created.
- Post: The function "visitNode" has been performed at each vertex of
- "graph" in depth-first order.
- */
- void depthFirstSearch(Graph_type graph)
+void depthFirstSearch(Graph_type graph)
 {
     int numVertices = length(graph);
     Boolean_type *isVisited = malloc(sizeof(Boolean_type));
@@ -396,13 +384,13 @@ int dequeue(Queue_type* queue)
     }
 }
 
-void breadthFirstSearch(int startVertex, Graph_type graph)
+void breadthFirstSearch(Graph_type graph)
 {
     int numVertices = length(graph);
 
     Boolean_type *isVisited = malloc(sizeof(Boolean_type));
     if (isVisited == NULL) {
-        printf("Not enough memory for queue\n");
+        printf("Not enough memory for Boolean array\n");
         return;
     }
     for (int i=0; i< numVertices; i++) {
@@ -410,26 +398,28 @@ void breadthFirstSearch(int startVertex, Graph_type graph)
     }
 
     Queue_type* queue = createQueue(graph);
-    isVisited[startVertex] = TRUE;
-    enqueue(startVertex, queue);
 
-    while (!isEmpty(queue)) {
-        int currentVertex = dequeue(queue);
-        printf("Visited %d\n", currentVertex);
-        Vertex_type *p = findVertex(currentVertex, graph);
- 
-        while (p != NULL) {
-            Edge_type* e = p->firstEdge;
-            while (e != NULL) {
-                int adjVertex = e->endPoint->label;
-                if (isVisited[adjVertex] == FALSE) {
-                    isVisited[adjVertex] = TRUE;
-                    enqueue(adjVertex, queue);
+    for (Vertex_type *p = graph; p != NULL; p = p->nextVertex) {
+        int startVertex = p->label;
+        if (!isVisited[startVertex]) {
+            enqueue(startVertex, queue);
+            do {
+                int currentVertex = dequeue(queue);
+                Vertex_type *q = findVertex(currentVertex, graph);
+                if (!isVisited[currentVertex]) {
+                    isVisited[currentVertex] = TRUE;
+                    visitNode(q);
                 }
-                e = e->nextEdge;
-            }
-            p = p->nextVertex;
+                
+                for (Edge_type* e = q->firstEdge; e != NULL; e = e->nextEdge) {
+                    int adjVertex = e->endPoint->label;
+                    if (!isVisited[adjVertex]) {
+                        enqueue(adjVertex, queue);
+                    }
+                }
+            } while (!isEmpty(queue));
         }
+        p = p->nextVertex;
     }
     free(queue->items);
     free(queue);
@@ -458,7 +448,7 @@ int main(int argc, const char * argv[])
     addEdge(3, 2, graph);
     printGraph(graph);
     depthFirstSearch(graph);
-    //breadthFirstSearch(3, graph);
+    breadthFirstSearch(graph);
 
     // Code to test the function edgeExists.
     // We should call the function "findVertex" before
@@ -469,19 +459,5 @@ int main(int argc, const char * argv[])
     printGraph(graph);
     Boolean_type exists = edgeExists(1, 4, graph);
 
-/*
-    addEdge(vertex0, vertex2, FALSE, &graph);   // edge(0, 2)
-    addEdge(vertex1, vertex2, TRUE,  &graph);   // edge(1, 2)
-    addEdge(vertex1, vertex3, FALSE, &graph);   // edge(1, 3)
-    addEdge(vertex3, vertex0, TRUE,  &graph);   // edge(3, 0)
-    addEdge(vertex3, vertex1, FALSE, &graph);   // edge(3, 1)
-    addEdge(vertex3, vertex2, FALSE, &graph);   // edge(3, 2)
-
-
-    addEdge(vertex1, vertex2);
-    printf("verter 0: %p %p\n", vertex0->firstEdge->nextEdge, vertex0->firstEdge->endPoint);
-    printf("verter 1: %p %p\n", vertex1->firstEdge, vertex1->nextVertex);
-    printf("verter 2: %p %p\n", vertex2->firstEdge, vertex2->nextVertex);
- */
     return 0;
 }
