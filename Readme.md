@@ -31,7 +31,9 @@ typedef Vertex_type *Graph_type;    // header for the linked list of vertices
 
 ```
 
-The above type definitions are from pg 386 of reference 1. Given below is the result of the graph produced by the demo.
+The above type definitions are from pg 386 of reference 1. An additional field, "label", is included in the struct vertex_tag. The value of this field should be unique because it will be used to search for a target vertex node. It could also be used in the sorting of the linked list of vertex nodes. And, if needed, the value can be used in a binary search.
+
+Given below is the result of the graph produced by the demo.
 
 ![](Documentation/fig10.15a.jpg)
 
@@ -42,6 +44,8 @@ The above type definitions are from pg 386 of reference 1. Given below is the re
 
 A modern ANSI C compiler.
 
+Tested on XCode 11.3 running on macOS Mojave
+
 **References**
 
 1) Data Structures and Program Design in C by Robert L. Kruse, Bruce P. Leung, Clovis L. Tondo
@@ -49,3 +53,7 @@ A modern ANSI C compiler.
 2) https://www.geeksforgeeks.org/dsa/introduction-to-graphs-data-structure-and-algorithm-tutorials/
 
 3) https://brilliant.org/wiki/graph-theory/
+
+4) https://www.geeksforgeeks.org/dsa/binary-search-on-singly-linked-list
+
+5) https://www.geeksforgeeks.org/dsa/merge-sort-for-linked-list
