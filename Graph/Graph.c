@@ -160,31 +160,6 @@ void appendEdge(Edge_type *newEdge, Vertex_type *srcVertex)
     }
 }
 
-// Append the edge to its
-
-void appendEdge2(Edge_type *newEdge, Graph_type graph)
-{
-    
-    // 2. Traverse to the last node
-    Edge_type* r = NULL;
-    Edge_type* p = graph->firstEdge;
-    while (p != NULL) {
-        // Is the edge to be added already in the linked list?
-        if (p == newEdge) {
-            printf("Edge already in the edge linked list\n");
-            return;             // yes
-        }
-        else {
-            r = p;
-            p = p->nextEdge;
-        }
-    }
-    
-    // 3. Link the new node to the last node
-    r->nextEdge = newEdge;
-}
-
-
 // graph cannot be NULL and the values of src and dest cannot be the same.
 void addEdge(int src, int dest, Graph_type graph)
 {
@@ -434,11 +409,6 @@ int main(int argc, const char * argv[])
         appendVertex(vertex, &graph);
     }
 
-/*
-    for (int i=0; i<4; i++) {
-        printf("%p\n", findVertex(i, graph));
-    }
- */
     addEdge(0, 1, graph);
     addEdge(0, 2, graph);
     addEdge(1, 2, graph);
