@@ -33,17 +33,30 @@ typedef Vertex_type *Graph_type;    // header for the linked list of vertices
 
 The above type definitions are from pg 386 of reference 1. An additional field, "label", is included in the struct vertex_tag. The value of this field should be unique because it will be used to search for a target vertex node. It could also be used in the sorting of the linked list of vertex nodes. And, if needed, the value can be used in a binary search.
 
-Creating an edge node using a pair of integers rather than a pair of pointers results in cleaner code. During debugging using XCode's built-in debugger, the programmer can easily identify which vertices are connected.
+Creating an edge node using a pair of integers rather than a pair of pointers results in cleaner code. During debugging using XCode's built-in debugger, the programmer can easily identify which vertices are connected. Adding an edge with the statement:
+
+```C
+    addEdge(0, 1, graph);
+
+
+looks neater than
+
+    addEdge(p, q, graph);
+~~~
+
+where p and q are of type Vertex_type *.
 
 Given below is a display of the graph produced by this toy demo.
 
 <br />
 
 vertex:0->edge(0, 1)->edge(0, 2)->NULL
+<br />
 vertex:1->edge(1, 2)->edge(1, 3)->NULL
+<br />
 vertex:2->NULL
+<br />
 vertex:3->edge(3, 0)->edge(3, 1)->edge(3, 2)->NULL
-
 <br />
 
 The graph pictorally:
