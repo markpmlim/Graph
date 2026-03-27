@@ -50,16 +50,16 @@ typedef struct Queue {
 // Prototype the functions
 Vertex_type* createVertex(int);
 Edge_type *createEdge(Vertex_type *);
-Vertex_type* findVertex(int, Graph_type);
-void appendVertex(Vertex_type*, Graph_type*);
+Vertex_type *findVertex(int, Graph_type);
+void appendVertex(Vertex_type *, Graph_type*);
 Boolean_type edgeExists(int, int, Graph_type);
-void appendEdge(Edge_type*, Vertex_type*);
+void appendEdge(Edge_type *, Vertex_type*);
 void addEdge(int, int, Graph_type);
 
-Queue_type* createQueue(Graph_type graph);
-void enqueue(int value, Queue_type*);
-int dequeue(Queue_type*);
-Boolean_type isEmpty(Queue_type*);
+Queue_type *createQueue(Graph_type graph);
+void enqueue(int value, Queue_type *);
+int dequeue(Queue_type *);
+Boolean_type isEmpty(Queue_type *);
 
 void depthFirstSearch(Graph_type);
 void breadthFirstSearch(Graph_type);
@@ -269,12 +269,12 @@ void traverse(Vertex_type *p, Boolean_type isVisited[],
     int v = p->label;
     isVisited[v] = TRUE;
     visit(p);
-    // Recurse for all the unvisited adjacent vertices
     Edge_type *e = p->firstEdge;
     while (e != NULL) {
         int w = e->endPoint->label;
         Vertex_type *dest = e->endPoint;
         if (!isVisited[w]) {
+            // Recurse for all the unvisited adjacent vertices
             traverse(dest, isVisited, *visit);
         }
         e = e->nextEdge;
