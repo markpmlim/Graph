@@ -33,7 +33,20 @@ typedef Vertex_type *Graph_type;    // header for the linked list of vertices
 
 The above type definitions are from pg 386 of reference 1. An additional field, "label", is included in the struct vertex_tag. The value of this field should be unique because it will be used to search for a target vertex node. It could also be used in the sorting of the linked list of vertex nodes. And, if needed, the value can be used in a binary search.
 
-Given below is the result of the graph produced by the demo.
+Creating an edge node using a pair of integers rather than a pair of pointers results in cleaner code. During debugging using XCode's built-in debugger, the programmer can easily identify which vertices are connected.
+
+Given below is a display of the graph produced by this toy demo.
+
+<br />
+
+vertex:0->edge(0, 1)->edge(0, 2)->NULL
+vertex:1->edge(1, 2)->edge(1, 3)->NULL
+vertex:2->NULL
+vertex:3->edge(3, 0)->edge(3, 1)->edge(3, 2)->NULL
+
+<br />
+
+The graph pictorally:
 
 ![](Documentation/fig10.15a.jpg)
 
@@ -44,7 +57,10 @@ Given below is the result of the graph produced by the demo.
 
 A modern ANSI C compiler.
 
-Tested on XCode 11.3 running on macOS Mojave
+Compiled and debugged using XCode 11.3 running on macOS Mojave.
+
+<br />
+<br />
 
 **References**
 
