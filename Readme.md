@@ -58,7 +58,7 @@ vertex:3->edge(3, 0)->edge(3, 1)->edge(3, 2)->NULL
 
 The graph pictorally:
 
-![](Documentation/fig10.15a.jpg)
+![](Documentation/fig.png)
 
 **Requirements**
 
