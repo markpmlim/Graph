@@ -61,8 +61,6 @@ The graph pictorally:
 ![](Documentation/fig10.15a.jpg)
 
 
-
-
 **Requirements**
 
 A modern ANSI C compiler.
