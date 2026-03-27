@@ -48,23 +48,20 @@ where p and q are of type Vertex_type *.
 
 Given below is a display of the graph produced by this toy demo.
 
-<br />
+
 
 vertex:0->edge(0, 1)->edge(0, 2)->NULL
-<br />
 vertex:1->edge(1, 2)->edge(1, 3)->NULL
-<br />
 vertex:2->NULL
-<br />
 vertex:3->edge(3, 0)->edge(3, 1)->edge(3, 2)->NULL
-<br />
+
 
 The graph pictorally:
 
 ![](Documentation/fig10.15a.jpg)
 
-<br />
-<br />
+
+
 
 **Requirements**
 
@@ -72,8 +69,8 @@ A modern ANSI C compiler.
 
 Compiled and debugged using XCode 11.3 running on macOS Mojave.
 
-<br />
-<br />
+
+
 
 **References**
 
