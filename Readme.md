@@ -48,8 +48,6 @@ where p and q are of type Vertex_type *.
 
 Given below is a display of the graph produced by this toy demo.
 
-
-
 vertex:0->edge(0, 1)->edge(0, 2)->NULL
 vertex:1->edge(1, 2)->edge(1, 3)->NULL
 vertex:2->NULL
