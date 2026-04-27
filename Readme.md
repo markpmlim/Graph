@@ -65,7 +65,7 @@ A modern ANSI C compiler.
 
 Compiled and debugged using XCode 11.3 running on macOS Mojave.
 
-
+Some Bug fixes for some functions: breadthFirstSearch, depthFirstSearch and createQueue.
 
 
 **References**
