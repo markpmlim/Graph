@@ -284,7 +284,7 @@ void traverse(Vertex_type *p, Boolean_type isVisited[],
 void depthFirstSearch(Graph_type graph)
 {
     int numVertices = length(graph);
-    Boolean_type *isVisited = malloc(sizeof(Boolean_type));
+    Boolean_type *isVisited = malloc(sizeof(Boolean_type)*numVertices);
     if (isVisited == NULL) {
         printf("Not enough memory for visited array\n");
         return;
@@ -312,7 +312,7 @@ Queue_type* createQueue(Graph_type graph)
     queue->front = -1;
     queue->rear = -1;
     queue->numItems = numVertices;
-    queue->items = malloc(sizeof(int));
+    queue->items = malloc(sizeof(int)*numVertices);
     for (int i=0; i<numVertices; i++) {
         queue->items[i] = -1;
     }
@@ -363,7 +363,7 @@ void breadthFirstSearch(Graph_type graph)
 {
     int numVertices = length(graph);
 
-    Boolean_type *isVisited = malloc(sizeof(Boolean_type));
+    Boolean_type *isVisited = malloc(sizeof(Boolean_type)*numVertices);
     if (isVisited == NULL) {
         printf("Not enough memory for Boolean array\n");
         return;
